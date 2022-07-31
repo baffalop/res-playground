@@ -1,15 +1,20 @@
-let initialCount = 1
+type inputState = Synced | Cached
 
 @react.component
 let make = () => {
-  let (incrementValue, setIncrement) = React.useState(() => Some(initialCount))
-  let (incrCache, setIncrCache) = React.useState(() => initialCount)
-  let increment: int = incrementValue->Option.getWithDefault(incrCache)
+  let ((inputState, increment), setIncrement) = React.useState(() => (Synced, 1))
 
-  let onInputIncr = e => {
+  let onInputIncrement = e => {
     let value = ReactEvent.Form.target(e)["value"]->Int.fromString
-    setIncrement(_ => value)
-    value->Option.mapWithDefault((), i => setIncrCache(_ => i))
+    setIncrement(_ => switch value {
+      | Some(i) => (Synced, i)
+      | None => (Cached, increment)
+    })
+  }
+
+  let inputValue = switch inputState {
+    | Synced => increment->Int.toString
+    | Cached => ""
   }
 
   <div className="flex flex-col justify-center items-center h-screen gap-6">
@@ -19,9 +24,9 @@ let make = () => {
       type_="number"
       min="1"
       step=1.0
-      value={incrementValue->Option.mapWithDefault("", Int.toString)}
+      value=inputValue
+      onInput=onInputIncrement
       className="px-6 py-3 border border-blue-300 rounded-lg"
-      onInput=onInputIncr
     />
   </div>
 }
