@@ -4,7 +4,6 @@ import * as Curry from "rescript/lib/es6/curry.js";
 import * as React from "react";
 import * as Belt_Int from "rescript/lib/es6/belt_Int.js";
 import * as Belt_Option from "rescript/lib/es6/belt_Option.js";
-import * as Utils$RescriptIntro from "./Utils.bs.js";
 import * as Counter$RescriptIntro from "./Counter.bs.js";
 
 function App(Props) {
@@ -13,11 +12,20 @@ function App(Props) {
       });
   var setIncrement = match[1];
   var incrementValue = match[0];
-  var increment = Belt_Option.getWithDefault(incrementValue, 1);
+  var match$1 = React.useState(function () {
+        return 1;
+      });
+  var setIncrCache = match$1[1];
+  var increment = Belt_Option.getWithDefault(incrementValue, match$1[0]);
   var onInputIncr = function (e) {
-    var partial_arg = Belt_Int.fromString(e.target.value);
-    return Curry._1(setIncrement, (function (param) {
-                  return Utils$RescriptIntro.$$Function.$$const(partial_arg, param);
+    var value = Belt_Int.fromString(e.target.value);
+    Curry._1(setIncrement, (function (param) {
+            return value;
+          }));
+    return Belt_Option.mapWithDefault(value, undefined, (function (i) {
+                  return Curry._1(setIncrCache, (function (param) {
+                                return i;
+                              }));
                 }));
   };
   return React.createElement("div", {
@@ -36,9 +44,12 @@ function App(Props) {
                 }));
 }
 
+var initialCount = 1;
+
 var make = App;
 
 export {
+  initialCount ,
   make ,
   
 }
