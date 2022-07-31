@@ -1,5 +1,5 @@
 @react.component
-let make = (~start as start=0, ~increment as inc=1) => {
+let make = (~start=0, ~increment as inc=1) => {
   let (clicks, setClicks) = React.useState(() => start)
   let incCount = _ => setClicks(clicks => clicks + inc)
 
