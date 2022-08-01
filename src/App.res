@@ -1,31 +1,14 @@
-type inputState = Synced | Cached
-
 @react.component
 let make = () => {
-  let ((inputState, increment), setIncrement) = React.useState(() => (Synced, 1))
-
-  let onInputIncrement = e => {
-    setIncrement(_ =>
-      switch ReactEvent.Form.target(e)["value"]->Int.fromString {
-      | Some(i) => (Synced, i)
-      | None => (Cached, increment)
-      }
-    )
-  }
-
-  let inputValue = switch inputState {
-  | Synced => increment->Int.toString
-  | Cached => ""
-  }
+  let (increment, setIncrement) = React.useState(() => 1)
 
   <div className="flex flex-col justify-center items-center h-screen gap-4">
     <Counter increment />
-    <input
-      type_="number"
-      min="1"
-      step=1.0
-      value=inputValue
-      onInput=onInputIncrement
+    <NumberInput.Int
+      min=1
+      step=1
+      value=increment
+      onInput={i => setIncrement(_ => i)}
       className="px-4 py-2 border border-blue-300 rounded-lg"
     />
   </div>

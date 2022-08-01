@@ -2,47 +2,29 @@
 
 import * as Curry from "rescript/lib/es6/curry.js";
 import * as React from "react";
-import * as Belt_Int from "rescript/lib/es6/belt_Int.js";
 import * as Counter$RescriptIntro from "./Counter.bs.js";
+import * as NumberInput$RescriptIntro from "./NumberInput.bs.js";
 
 function App(Props) {
   var match = React.useState(function () {
-        return [
-                /* Synced */0,
-                1
-              ];
+        return 1;
       });
   var setIncrement = match[1];
-  var match$1 = match[0];
-  var increment = match$1[1];
-  var onInputIncrement = function (e) {
-    return Curry._1(setIncrement, (function (param) {
-                  var i = Belt_Int.fromString(e.target.value);
-                  if (i !== undefined) {
-                    return [
-                            /* Synced */0,
-                            i
-                          ];
-                  } else {
-                    return [
-                            /* Cached */1,
-                            increment
-                          ];
-                  }
-                }));
-  };
-  var inputValue = match$1[0] ? "" : String(increment);
+  var increment = match[0];
   return React.createElement("div", {
               className: "flex flex-col justify-center items-center h-screen gap-4"
             }, React.createElement(Counter$RescriptIntro.make, {
                   increment: increment
-                }), React.createElement("input", {
-                  className: "px-4 py-2 border border-blue-300 rounded-lg",
-                  min: "1",
-                  step: 1.0,
-                  type: "number",
-                  value: inputValue,
-                  onInput: onInputIncrement
+                }), React.createElement(NumberInput$RescriptIntro.Int.make, {
+                  value: increment,
+                  onInput: (function (i) {
+                      return Curry._1(setIncrement, (function (param) {
+                                    return i;
+                                  }));
+                    }),
+                  step: 1,
+                  min: 1,
+                  className: "px-4 py-2 border border-blue-300 rounded-lg"
                 }));
 }
 
