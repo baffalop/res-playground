@@ -32,9 +32,12 @@ function App(Props) {
                 }));
   };
   var inputValue = match$1[0] ? "" : String(increment);
-  return React.createElement(React.Fragment, undefined, React.createElement(Counter$RescriptIntro.make, {
+  return React.createElement("div", {
+              className: "flex flex-col justify-center items-center h-screen gap-6"
+            }, React.createElement(Counter$RescriptIntro.make, {
                   increment: increment
                 }), React.createElement("input", {
+                  className: "px-6 py-3 border border-blue-300 rounded-lg",
                   min: "1",
                   step: 1.0,
                   type: "number",

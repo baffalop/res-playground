@@ -3,15 +3,11 @@ let make = (~start=0, ~increment as inc=1) => {
   let (clicks, setClicks) = React.useState(() => start)
   let incCount = _ => setClicks(clicks => clicks + inc)
 
-  <div className="flex justify-center items-center gap-4">
-    <span className="w-20 text-left">
-      {React.string(`Clicks: ${Belt.Int.toString(clicks)}`)}
-    </span>
+  let msg = `Clicks: ${Belt.Int.toString(clicks)}`
 
-    <button
-      className="px-6 py-3 bg-blue-400 text-white rounded-lg"
-      onClick=incCount
-    >
+  <div className="flex justify-center items-center gap-4">
+    <span className="w-20 text-left"> {React.string(msg)} </span>
+    <button onClick=incCount className="px-6 py-3 bg-blue-400 text-white rounded-lg">
       {React.string("+ " ++ Belt.Int.toString(inc))}
     </button>
   </div>

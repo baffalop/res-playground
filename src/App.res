@@ -18,8 +18,15 @@ let make = () => {
   | Cached => ""
   }
 
-  <>
+  <div className="flex flex-col justify-center items-center h-screen gap-6">
     <Counter increment />
-    <input type_="number" min="1" step=1.0 value=inputValue onInput=onInputIncrement />
-  </>
+    <input
+      type_="number"
+      min="1"
+      step=1.0
+      value=inputValue
+      onInput=onInputIncrement
+      className="px-6 py-3 border border-blue-300 rounded-lg"
+    />
+  </div>
 }
