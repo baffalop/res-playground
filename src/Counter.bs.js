@@ -19,11 +19,11 @@ function Counter(Props) {
   };
   var msg = "Clicks: " + String(match[0]);
   return React.createElement("div", {
-              className: "flex justify-center items-center gap-4"
+              className: "flex justify-center items-center gap-2"
             }, React.createElement("span", {
                   className: "w-20 text-left"
                 }, msg), React.createElement("button", {
-                  className: "px-6 py-3 bg-blue-400 text-white rounded-lg",
+                  className: "px-4 py-2 bg-blue-400 text-white rounded-lg",
                   onClick: incCount
                 }, "+ " + String(inc)));
 }
