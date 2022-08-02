@@ -2,6 +2,7 @@
 
 import * as Curry from "rescript/lib/es6/curry.js";
 import * as React from "react";
+import * as Utils$RescriptIntro from "./Utils.bs.js";
 
 function Counter(Props) {
   var startOpt = Props.start;
@@ -13,19 +14,26 @@ function Counter(Props) {
       });
   var setClicks = match[1];
   var incCount = function (param) {
-    return Curry._1(setClicks, (function (clicks) {
-                  return clicks + inc | 0;
+    return Curry._1(setClicks, (function (param) {
+                  return Utils$RescriptIntro.Int.add(inc, param);
                 }));
   };
-  var msg = "Clicks: " + String(match[0]);
+  var decCount = function (param) {
+    return Curry._1(setClicks, (function (param) {
+                  return Utils$RescriptIntro.Int.sub(inc, param);
+                }));
+  };
   return React.createElement("div", {
               className: "flex justify-center items-center gap-2"
             }, React.createElement("span", {
                   className: "w-20 text-left"
-                }, msg), React.createElement("button", {
+                }, "Clicks: " + String(match[0])), React.createElement("button", {
                   className: "px-4 py-2 bg-blue-400 text-white rounded-lg",
                   onClick: incCount
-                }, "+ " + String(inc)));
+                }, "+ " + String(inc)), React.createElement("button", {
+                  className: "px-4 py-2 bg-blue-400 text-white rounded-lg",
+                  onClick: decCount
+                }, "- " + String(inc)));
 }
 
 var make = Counter;

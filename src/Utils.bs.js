@@ -14,8 +14,22 @@ var $$Function = {
   $$const: $$const
 };
 
+function add(x, y) {
+  return x + y | 0;
+}
+
+function sub(x, y) {
+  return y - x | 0;
+}
+
+var Int = {
+  add: add,
+  sub: sub
+};
+
 export {
   $$Function ,
+  Int ,
   
 }
 /* No side effect */
