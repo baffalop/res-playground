@@ -14,17 +14,22 @@ let make = () => {
       onInput={i => setIncrement(_ => i)}
       className="px-4 py-2 border border-blue-300 rounded-lg"
     />
-    <button onClick={_ => toggle(s => !s)} className="px-4 py-2 bg-red-400 text-white rounded-lg">
+
+    <button
+      onClick={_ => toggle(s => !s)}
+      className="px-4 py-2 bg-red-400 text-white rounded-lg"
+    >
       {React.string("Toggle")}
     </button>
+
     <CSSTransition
       in_=state
-      timeout=300
+      timeout=500
       enterFrom="opacity-0"
-      enterActive="opacity-100 transition-opacity duration-300"
-      exitFrom="opacity-100"
-      exitActive="opacity-0 transition-opacity duration-300"
-      exitDone="opacity-0">
+      enterActive="opacity-100 transition-opacity duration-500"
+      exitActive="opacity-0 transition-opacity duration-500"
+      exitDone="invisible"
+    >
       <div className="p-3 bg-yellow-600"> {React.string("Hi")} </div>
     </CSSTransition>
   </div>

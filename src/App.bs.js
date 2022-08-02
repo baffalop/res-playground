@@ -42,12 +42,11 @@ function App(Props) {
                         className: "p-3 bg-yellow-600"
                       }, "Hi"),
                   in_: match$1[0],
-                  timeout: 300,
+                  timeout: 500,
                   enterFrom: "opacity-0",
-                  enterActive: "opacity-100 transition-opacity duration-300",
-                  exitFrom: "opacity-100",
-                  exitActive: "opacity-0 transition-opacity duration-300",
-                  exitDone: "opacity-0"
+                  enterActive: "opacity-100 transition-opacity duration-500",
+                  exitActive: "opacity-0 transition-opacity duration-500",
+                  exitDone: "invisible"
                 }));
 }
 
