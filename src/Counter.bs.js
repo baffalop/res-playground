@@ -3,6 +3,9 @@
 import * as Curry from "rescript/lib/es6/curry.js";
 import * as React from "react";
 import * as Utils$RescriptIntro from "./Utils.bs.js";
+import * as Styles$RescriptIntro from "./Styles.bs.js";
+
+var buttonClasses = Styles$RescriptIntro.button + " bg-blue-400";
 
 function Counter(Props) {
   var startOpt = Props.start;
@@ -28,10 +31,10 @@ function Counter(Props) {
             }, React.createElement("span", {
                   className: "w-20 text-left"
                 }, "Clicks: " + String(match[0])), React.createElement("button", {
-                  className: "px-4 py-2 bg-blue-400 text-white rounded-lg",
+                  className: buttonClasses,
                   onClick: incCount
                 }, "+ " + String(inc)), React.createElement("button", {
-                  className: "px-4 py-2 bg-blue-400 text-white rounded-lg",
+                  className: buttonClasses,
                   onClick: decCount
                 }, "- " + String(inc)));
 }
@@ -39,6 +42,7 @@ function Counter(Props) {
 var make = Counter;
 
 export {
+  buttonClasses ,
   make ,
   
 }

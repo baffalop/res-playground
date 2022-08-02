@@ -15,10 +15,7 @@ let make = () => {
       className="px-4 py-2 border border-blue-300 rounded-lg"
     />
 
-    <button
-      onClick={_ => toggle(s => !s)}
-      className="px-4 py-2 bg-red-400 text-white rounded-lg"
-    >
+    <button onClick={_ => toggle(s => !s)} className=`${Styles.button} bg-red-400`>
       {React.string("Toggle")}
     </button>
 

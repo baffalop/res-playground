@@ -1,3 +1,5 @@
+let buttonClasses = `${Styles.button} bg-blue-400`
+
 @react.component
 let make = (~start=0, ~increment as inc=1) => {
   let (clicks, setClicks) = React.useState(() => start)
@@ -9,11 +11,11 @@ let make = (~start=0, ~increment as inc=1) => {
       {React.string(`Clicks: ${Int.toString(clicks)}`)}
     </span>
 
-    <button onClick=incCount className="px-4 py-2 bg-blue-400 text-white rounded-lg">
+    <button onClick=incCount className=buttonClasses>
       {React.string("+ " ++ Int.toString(inc))}
     </button>
 
-    <button onClick=decCount className="px-4 py-2 bg-blue-400 text-white rounded-lg">
+    <button onClick=decCount className=buttonClasses>
       {React.string("- " ++ Int.toString(inc))}
     </button>
   </div>

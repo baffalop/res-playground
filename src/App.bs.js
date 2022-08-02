@@ -2,6 +2,7 @@
 
 import * as Curry from "rescript/lib/es6/curry.js";
 import * as React from "react";
+import * as Styles$RescriptIntro from "./Styles.bs.js";
 import * as Counter$RescriptIntro from "./Counter.bs.js";
 import * as NumberInput$RescriptIntro from "./NumberInput.bs.js";
 import * as ReactTransitionGroup$RescriptIntro from "./external/ReactTransitionGroup.bs.js";
@@ -31,7 +32,7 @@ function App(Props) {
                   min: 1,
                   className: "px-4 py-2 border border-blue-300 rounded-lg"
                 }), React.createElement("button", {
-                  className: "px-4 py-2 bg-red-400 text-white rounded-lg",
+                  className: Styles$RescriptIntro.button + " bg-red-400",
                   onClick: (function (param) {
                       return Curry._1(toggle, (function (s) {
                                     return !s;
