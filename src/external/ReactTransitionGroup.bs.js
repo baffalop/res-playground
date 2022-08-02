@@ -14,6 +14,7 @@ function ReactTransitionGroup$CSSTransition(Props) {
   var in_ = Props.in_;
   var timeoutOpt = Props.timeout;
   var appearOpt = Props.appear;
+  var unmountOnExitOpt = Props.unmountOnExit;
   var appearFromOpt = Props.appearFrom;
   var appearActiveOpt = Props.appearActive;
   var appearDoneOpt = Props.appearDone;
@@ -25,6 +26,7 @@ function ReactTransitionGroup$CSSTransition(Props) {
   var exitDoneOpt = Props.exitDone;
   var timeout = timeoutOpt !== undefined ? timeoutOpt : 0;
   var appear = appearOpt !== undefined ? appearOpt : false;
+  var unmountOnExit = unmountOnExitOpt !== undefined ? unmountOnExitOpt : false;
   var appearFrom = appearFromOpt !== undefined ? appearFromOpt : "";
   var appearActive = appearActiveOpt !== undefined ? appearActiveOpt : "";
   var appearDone = appearDoneOpt !== undefined ? appearDoneOpt : "";
@@ -49,7 +51,8 @@ function ReactTransitionGroup$CSSTransition(Props) {
                 exitActive: exitActive,
                 exitDone: exitDone
               },
-              appear: appear
+              appear: appear,
+              unmountOnExit: unmountOnExit
             });
 }
 

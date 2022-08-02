@@ -19,6 +19,7 @@ module Internal = {
       ~timeout: int=?,
       ~classNames: classNames,
       ~appear: bool,
+      ~unmountOnExit: bool,
     ) => React.element = "CSSTransition"
   }
 }
@@ -30,6 +31,7 @@ module CSSTransition = {
     ~in_: bool,
     ~timeout=0,
     ~appear=false,
+    ~unmountOnExit=false,
     ~appearFrom="",
     ~appearActive="",
     ~appearDone="",
@@ -44,6 +46,7 @@ module CSSTransition = {
       \"in"=in_
       timeout
       appear
+      unmountOnExit
       classNames={{
         appear: appearFrom,
         appearActive,
